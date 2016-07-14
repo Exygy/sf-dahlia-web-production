@@ -30,6 +30,16 @@ accordion-heading.lead.accordion-header
       p.c-steel ng-if="!lotteryDateVenueAvailable(listing)"
         | Lottery date, time and venue to be scheduled.
 
+    / neighborhood preference list
+    .content-panel.padding-bottom.no-margin.border-bottom ng-if="showNeighborhoodPreferences()"
+      h4.t-small.t-sans.t-bold
+        | Confirmed Neighborhood Resident Housing Preference List
+      a.button.expand ng-href="{{listing.NeighborHoodPreferenceUrl}}" target="_blank"
+        | View Preference List
+      p.c-steel.t-small
+        / | 1200 applications qualify for this preference and will be given a higher priority in the lottery.
+        | Applications that qualify for this preference will be given a higher priority in the lottery.
+
     .content-panel.padding-bottom.no-margin.border-bottom
       h4.t-small.t-sans.t-bold Lottery Results
       h3.t-delta.t-sans.c-steel
@@ -55,46 +65,7 @@ accordion-heading.lead.accordion-header
         | {{listing.Lottery_Summary}}
 
     .content-panel.padding-bottom.no-margin.border-bottom
-      h4.t-small.t-sans.t-bold What to Expect
-      p.c-steel.t-small Applicants will be contacted by the leasing agent in lottery rank order until vacancies are filled.
-      div ng-show="whatToExpectOpen"
-        p.c-steel.t-small All of the information that you have provided must be verified, and your eligibility confirmed.  Any fraudulent statements will cause your application to be removed from the lottery.  You will also be removed from the lottery if you cannot prove a housing preference, or if a household member appears on more than one application.
-        p.c-steel.t-small Should your application be chosen from the lottery, be prepared to fill out a more detailed application and provide required supporting documents.
-      a.toggler.toggle-more.t-small href="#" ng-class="{ open : whatToExpectOpen }" ng-click="whatToExpectOpen = !whatToExpectOpen"
-        ' read {{ whatToExpectOpen ? 'less' : 'more' }}
-        span.ui-icon.ui-tiny.i-primary
-          svg
-            use xlink:href="#i-arrow-down" xmlns:xlink="http://www.w3.org/1999/xlink"
-    .content-panel.padding-bottom ng-if="listing.Leasing_Agent_Phone || listing.Leasing_Agent_Email"
-      h4.t-small.t-sans.t-bold Contact Leasing Agent
-      h3.t-delta.t-sans.no-margin
-        | {{ listing.Leasing_Agent_Name }}
-      p.c-steel
-        | {{ listing.Leasing_Agent_Title }}
-      a.margin-bottom--half ng-href="tel:{{listing.Leasing_Agent_Phone | htmlTel}}" ng-if="listing.Leasing_Agent_Phone"
-        span.ui-icon.ui-medium.i-primary
-          svg
-            use xlink:href="#i-phone"
-        |  Call {{ listing.Leasing_Agent_Phone }}
-      p.t-small.c-steel Due to high call volume you may hear a message.
-      a ng-href="mailto:{{listing.Leasing_Agent_Email}}" ng-if="listing.Leasing_Agent_Email"
-        span.ui-icon.ui-medium.i-primary
-          svg
-            use xlink:href="#i-mail"
-        |  Email
+      ng-include src="'listings/templates/listing/_what_to_expect.html'"
 
-      p.no-margin
-        | {{listing.Application_Organization}}
-      p.c-steel
-        | {{ listing.Building_Street_Address }},
-        br
-        | {{ listing.Building_City }} {{ listing.Building_State }} {{ listing.Building_Zip_Code }}
-      a.d-block.margin-bottom href="https://www.google.com/maps/place/{{formattedAddress(listing)}}"
-        span.ui-icon
-          svg
-            use xlink:href="#i-map"
-        | Get Directions
-      span ng-if="listing.Office_Open && listing.Office_Closed"
-        p.no-margin Office Hours
-        p.c-steel
-          | {{listing.Office_Open}}&mdash;{{listing.Office_Closed}}
+    .content-panel.padding-bottom ng-if="listing.Leasing_Agent_Phone || listing.Leasing_Agent_Email"
+      ng-include src="'listings/templates/listing/_contact_leasing_agent.html'"
