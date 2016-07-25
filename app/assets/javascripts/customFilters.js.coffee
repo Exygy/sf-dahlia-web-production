@@ -16,9 +16,11 @@ angular.module('customFilters', [])
     input.toString().trim().replace(/\D/g,'')
   ]
 .filter 'nl2br', ['$filter', ($filter) ->
-  (input) ->
+  (input, el) ->
     return '' unless input
-    input.trim().replace(/\n/g,'<br>')
+    input.trim()
+      .replace(/\n/g,'<br>')
+      .replace(/\<a\s/g,'<a class="no-padding no-border "')
   ]
 .filter 'incomeTimeframe', ['$filter', ($filter) ->
   (input) ->
