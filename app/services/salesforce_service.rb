@@ -11,7 +11,7 @@ class SalesforceService
 
   def self.oauth_client
     Restforce.new(
-      authentication_retries: 0,
+      authentication_retries: 1,
       oauth_token: oauth_token,
       instance_url: ENV['SALESFORCE_INSTANCE_URL'],
       mashify: false,
