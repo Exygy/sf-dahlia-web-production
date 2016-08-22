@@ -154,12 +154,6 @@ ListingController = ($scope, $state, $sce, $sanitize, $filter, Carousel, SharedS
   $scope.isLotteryResultsListing = (listing) ->
     $scope.lotteryResultsListings.indexOf(listing) > -1
 
-  $scope.lotteryPreferenceDescription = (name) ->
-    found = ''
-    angular.forEach $scope.lotteryPreferences, (pref) ->
-      found = pref.Description if pref.Name == name
-    found
-
   # --- Carousel ---
   $scope.carouselHeight = 300
   $scope.Carousel = Carousel
@@ -183,6 +177,9 @@ ListingController = ($scope, $state, $sce, $sanitize, $filter, Carousel, SharedS
 
   $scope.showNeighborhoodPreferences = ->
     ListingService.showNeighborhoodPreferences($scope.listing)
+
+  $scope.listingIs480Potrero = ->
+    $scope.listing.Id == 'a0WU000000DBJ9YMAX'
 
 ############################################################################################
 ######################################## CONFIG ############################################

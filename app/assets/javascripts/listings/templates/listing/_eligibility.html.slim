@@ -51,17 +51,62 @@ accordion-heading.lead
     header.margin-bottom
       h4.t-base.t-sans.margin-bottom--half
         | Lottery Preferences
-      p.t-small.c-steel
+      p.t-small.c-steel ng-if="!listingIs480Potrero()"
         | Preference holders will be given highest ranking in the lottery process.
-    accordion.accordion-nested.accordion.trigger-left
-      accordion-group.accordion-navigation ng-repeat="preference in listing.Listing_Lottery_Preferences"
-        accordion-heading.accordion-header
-          | {{preference.Lottery_Preference.Name}}
-          ng-include src="'shared/templates/_arrow-down.html'"
-        #panel1a-a.content
-          p
-            / Look up lotteryPreferenceDescription from Service.lotteryPreferences
-            | {{lotteryPreferenceDescription(preference.Lottery_Preference.Name)}}
+      div ng-if="listingIs480Potrero()"
+        / ----------------------------------------------
+        / --- HOT FIX for hardcoded 480 Potrero Info ---
+        / ----------------------------------------------
+        p.t-small.c-steel
+          | Anyone may enter the housing lottery for this listing. If your household has one of the following preferences, you will be considered in the order shown here. Each preference holder will be reviewed in lottery rank order.
+
+        accordion.accordion-nested.accordion.trigger-left
+
+          accordion-group.accordion-navigation
+            accordion-heading.accordion-header
+              | 1st - Certificate of Preference (COP)
+              ng-include src="'shared/templates/_arrow-down.html'"
+            .content
+              span.c-steel Up to 11 units available
+              br
+              ' Households in which one member holds a Certificate of Preference from the former San Francisco Redevelopment Agency. COP holders were displaced by Agency action generally during the 1960s and 1970s.
+              a.no-padding.no-border href='http://sfmohcd.org/certificate-preference' target='_blank'
+                | Read more
+
+          accordion-group.accordion-navigation
+            accordion-heading.accordion-header
+              | 2nd - Displaced Tenant Housing Preference (DTHP)
+              ng-include src="'shared/templates/_arrow-down.html'"
+            .content
+              span.c-steel Up to 2 units available
+              br
+              ' Households in which one member holds a Displaced Tenant Housing Preference Certificate. DTHP Certificate holders are people who have been evicted through either an Ellis Act Eviction or an Owner Move-In Eviction in 2010 or later. Once all units reserved for this preference are filled, remaining DTHP holders will receive Live/Work preference, regardless of their current living or working location.
+              a.no-padding.no-border href='http://sfmohcd.org/displaced-tenant-housing-preference-program-0' target='_blank'
+                | Read more
+
+          accordion-group.accordion-navigation
+            accordion-heading.accordion-header
+              | 3rd - Neighborhood Resident Housing Preference (NRHP)
+              ng-include src="'shared/templates/_arrow-down.html'"
+            .content
+              span.c-steel Up to 4 units available
+              br
+              ' Households that submit acceptable documentation that at least one member lives either within supervisorial district <b>10</b> or within a half-mile of the project.
+              a.no-padding.no-border href='https://sfmohcd.org/neighborhood-resident-housing-preference' target='_blank'
+                | Read more
+
+          accordion-group.accordion-navigation
+            accordion-heading.accordion-header
+              | 4th - Live/Work in San Francisco Preference
+              ng-include src="'shared/templates/_arrow-down.html'"
+            .content
+              span.c-steel All remaining units
+              br
+              ' Households that submit acceptable documentation that at least one member lives or works in San Francisco. In order to claim Work Preference, you or a household member must currently work in San Francisco at least 75% of your working hours.
+
+        p.t-small.c-steel.padding-top
+          | After all preference holders have been considered, any remaining units will be available to qualified applicants who do not live or work in San Francisco.
+
 
   .content-panel.wide.lined
     header.panel-header data-equalizer-watch=""
