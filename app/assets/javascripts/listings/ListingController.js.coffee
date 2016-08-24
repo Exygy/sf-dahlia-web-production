@@ -181,6 +181,11 @@ ListingController = ($scope, $state, $sce, $sanitize, $filter, Carousel, SharedS
   $scope.listingIs480Potrero = ->
     $scope.listing.Id == 'a0WU000000DBJ9YMAX'
 
+  $scope.listingIsAlchemy = ->
+    $scope.listing.Id == 'a0WU000000BdZWlMAN'
+  if ($scope.listingIsAlchemy())
+    $scope.listing.NeighborHoodPreferenceUrl = 'http://sfmohcd.org/sites/default/files/Documents/MOH/Lottery%20Results/The%20Alchemy%20%28200%20Buchanan%29%20-%20NRHP%20Results%20Only.pdf'
+
 ############################################################################################
 ######################################## CONFIG ############################################
 ############################################################################################
