@@ -178,13 +178,24 @@ ListingController = ($scope, $state, $sce, $sanitize, $filter, Carousel, SharedS
   $scope.showNeighborhoodPreferences = ->
     ListingService.showNeighborhoodPreferences($scope.listing)
 
+  $scope.showLotteryPreferences = ->
+    $scope.listingIs480Potrero() || $scope.listingIsAlchemy()
+
   $scope.listingIs480Potrero = ->
     $scope.listing.Id == 'a0WU000000DBJ9YMAX'
 
   $scope.listingIsAlchemy = ->
     $scope.listing.Id == 'a0WU000000BdZWlMAN'
+
   if ($scope.listingIsAlchemy())
-    $scope.listing.NeighborHoodPreferenceUrl = 'http://sfmohcd.org/sites/default/files/Documents/MOH/Lottery%20Results/The%20Alchemy%20%28200%20Buchanan%29%20-%20NRHP%20Results%20Only.pdf'
+    $scope.listing.COPUnits = 50
+    $scope.listing.DTHPUnits = 10
+    $scope.listing.NRHPUnits = 20
+
+  if ($scope.listingIs480Potrero())
+    $scope.listing.COPUnits = 11
+    $scope.listing.DTHPUnits = 2
+    $scope.listing.NRHPUnits = 4
 
 ############################################################################################
 ######################################## CONFIG ############################################

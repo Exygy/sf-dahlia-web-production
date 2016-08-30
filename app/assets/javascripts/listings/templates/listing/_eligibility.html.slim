@@ -51,11 +51,12 @@ accordion-heading.lead
     header.margin-bottom
       h4.t-base.t-sans.margin-bottom--half
         | Lottery Preferences
-      p.t-small.c-steel ng-if="!listingIs480Potrero()"
+      p.t-small.c-steel ng-if="!showLotteryPreferences()"
         | Preference holders will be given highest ranking in the lottery process.
-      div ng-if="listingIs480Potrero()"
+      div ng-if="showLotteryPreferences()"
         / ----------------------------------------------
-        / --- HOT FIX for hardcoded 480 Potrero Info ---
+        / --- HOT FIX for hardcoded Lottery Preferences
+        / --- 480 Potrero + Alchemy
         / ----------------------------------------------
         p.t-small.c-steel
           | Anyone may enter the housing lottery for this listing. If your household has one of the following preferences, you will be considered in the order shown here. Each preference holder will be reviewed in lottery rank order.
@@ -67,7 +68,8 @@ accordion-heading.lead
               | 1st - Certificate of Preference (COP)
               ng-include src="'shared/templates/_arrow-down.html'"
             .content
-              span.c-steel Up to 11 units available
+              / 11
+              span.c-steel Up to {{listing.COPUnits}} units available
               br
               ' Households in which one member holds a Certificate of Preference from the former San Francisco Redevelopment Agency. COP holders were displaced by Agency action generally during the 1960s and 1970s.
               a.no-padding.no-border href='http://sfmohcd.org/certificate-preference' target='_blank'
@@ -78,7 +80,8 @@ accordion-heading.lead
               | 2nd - Displaced Tenant Housing Preference (DTHP)
               ng-include src="'shared/templates/_arrow-down.html'"
             .content
-              span.c-steel Up to 2 units available
+              / 2
+              span.c-steel Up to {{listing.DTHPUnits}} units available
               br
               ' Households in which one member holds a Displaced Tenant Housing Preference Certificate. DTHP Certificate holders are people who have been evicted through either an Ellis Act Eviction or an Owner Move-In Eviction in 2010 or later. Once all units reserved for this preference are filled, remaining DTHP holders will receive Live/Work preference, regardless of their current living or working location.
               a.no-padding.no-border href='http://sfmohcd.org/displaced-tenant-housing-preference-program-0' target='_blank'
@@ -89,7 +92,8 @@ accordion-heading.lead
               | 3rd - Neighborhood Resident Housing Preference (NRHP)
               ng-include src="'shared/templates/_arrow-down.html'"
             .content
-              span.c-steel Up to 4 units available
+              / 4
+              span.c-steel Up to {{listing.NRHPUnits}} units available
               br
               ' Households that submit acceptable documentation that at least one member lives either within supervisorial District 10 or within a half-mile of the project.
               a.no-padding.no-border href='http://sfmohcd.org/neighborhood-resident-housing-preference' target='_blank'
