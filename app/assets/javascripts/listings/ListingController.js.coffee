@@ -191,11 +191,13 @@ ListingController = ($scope, $state, $sce, $sanitize, $filter, Carousel, SharedS
     $scope.listing.COPUnits = 50
     $scope.listing.DTHPUnits = 10
     $scope.listing.NRHPUnits = 20
+    $scope.listing.supervisorialDistrict = 8
 
   if ($scope.listingIs480Potrero())
     $scope.listing.COPUnits = 11
     $scope.listing.DTHPUnits = 2
     $scope.listing.NRHPUnits = 4
+    $scope.listing.supervisorialDistrict = 10
 
 ############################################################################################
 ######################################## CONFIG ############################################
