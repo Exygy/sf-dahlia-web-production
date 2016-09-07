@@ -21,7 +21,7 @@ p.c-steel ng-if="listing.Application_Street_Address"
   | {{ listing.Application_Street_Address }},
   br
   | {{ listing.Application_City }} {{ listing.Application_State }} {{ listing.Application_Postal_Code }}
-a.d-block.margin-bottom target="_blank" href="https://www.google.com/maps/place/{{formattedApplicationAddress(listing)}}"
+a.d-block.margin-bottom target="_blank" href="https://www.google.com/maps/place/{{formattedApplicationAddress(listing)}}"  ng-if="listing.Application_Street_Address"
   span.ui-icon
     svg
       use xlink:href="#i-map"
