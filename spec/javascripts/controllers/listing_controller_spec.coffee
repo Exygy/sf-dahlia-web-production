@@ -35,8 +35,9 @@ do ->
         favorites: fakeListingFavorites
         maxIncomeLevels: []
         lotteryPreferences: []
-        hasEligibilityFilters: () ->
-          undefined
+        hasEligibilityFilters: () -> null
+        listingIsAlchemy: () -> null
+        listingIs480Potrero: () -> null
       fakeListingService.toggleFavoriteListing = jasmine.createSpy()
       fakeListingService.isFavorited = jasmine.createSpy()
       fakeListingService.openLotteryResultsModal = jasmine.createSpy()

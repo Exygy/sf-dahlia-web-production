@@ -48,7 +48,7 @@ accordion-heading.lead.accordion-header
         ' Complete lottery results will be posted here on
         ' {{ listing.Lottery_Results_Date | date : 'longDate' }}
         ' by 5pm.
-      ul.result-set.margin-bottom ng-if="listing.Lottery_Results"
+      ul.result-set.margin-bottom ng-if="listing.Lottery_Results && listing.Lottery_Members.length > 0"
         span ng-if="listing.Lottery_Members.length <= 20"
           li
             | Rank
@@ -59,6 +59,9 @@ accordion-heading.lead.accordion-header
             span.right
               | {{ticket.Lottery_Number}}
         a.button.expand.no-margin ng-if="listing.Lottery_Members.length > 20" ng-click="openLotteryResultsModal()" View Lottery Results
+
+      ul.result-set.margin-bottom ng-if="listingIsAlchemy()"
+        a.button.expand.no-margin target="_blank" ng-href="{{listing.LotteryResultsPDFUrl}}" Download Lottery Results
 
       p.c-steel.t-small ng-if="listing.Lottery_Results && listing.Lottery_Summary"
         / will show text e.g. "Out of 50 applications, 20 numbers were pulled."

@@ -182,16 +182,20 @@ ListingController = ($scope, $state, $sce, $sanitize, $filter, Carousel, SharedS
     $scope.listingIs480Potrero() || $scope.listingIsAlchemy()
 
   $scope.listingIs480Potrero = ->
-    $scope.listing.Id == 'a0WU000000DBJ9YMAX'
+    ListingService.listingIs480Potrero($scope.listing)
 
   $scope.listingIsAlchemy = ->
-    $scope.listing.Id == 'a0WU000000BdZWlMAN'
+    ListingService.listingIsAlchemy($scope.listing)
 
   if ($scope.listingIsAlchemy())
     $scope.listing.COPUnits = 50
     $scope.listing.DTHPUnits = 10
     $scope.listing.NRHPUnits = 20
     $scope.listing.supervisorialDistrict = 8
+    $scope.listing.Lottery_Results = true
+    $scope.listing.LotteryResultsPDFUrl = '''
+      http://sfmohcd.org/sites/default/files/Documents/MOH/Lottery%20Results/Posting%20200%20Buchanan%20-%20Alchemy%208-31-2016.pdf
+    '''
 
   if ($scope.listingIs480Potrero())
     $scope.listing.COPUnits = 11
