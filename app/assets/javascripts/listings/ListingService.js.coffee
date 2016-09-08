@@ -150,6 +150,12 @@ ListingService = ($http, $localStorage, $modal) ->
     angular.copy([], Service.closedListings)
     angular.copy([], Service.lotteryResultsListings)
     listings.forEach (listing) ->
+      # NOTE: hardcode for Alchemy
+      if Service.listingIsAlchemy(listing)
+        listing.Lottery_Results = true
+        # listing.
+      # ----
+
       if Service.listingIsOpen(listing.Application_Due_Date)
         # All Open Listings Array
         Service.openListings.push(listing)
@@ -220,6 +226,14 @@ ListingService = ($http, $localStorage, $modal) ->
     ).error( (data, status, headers, config) ->
       return
     )
+
+
+  Service.listingIs480Potrero = (listing) ->
+    listing.Id == 'a0WU000000DBJ9YMAX'
+
+  Service.listingIsAlchemy = (listing) ->
+    listing.Id == 'a0WU000000BdZWlMAN'
+
 
   return Service
 
