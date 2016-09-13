@@ -234,6 +234,15 @@ ListingService = ($http, $localStorage, $modal) ->
   Service.listingIsAlchemy = (listing) ->
     listing.Id == 'a0WU000000BdZWlMAN'
 
+  Service.listingIsClarence = (listing) ->
+    listing.Id == 'a0W0P00000DYQpCUAX'
+
+  Service.listingIs168Hyde = (listing) ->
+    listing.Id == 'a0W0P00000DYPP7UAP'
+
+  Service.listingIsOlume = (listing) ->
+    listing.Id == 'a0W0P00000DYN6BUAX'
+
 
   return Service
 
