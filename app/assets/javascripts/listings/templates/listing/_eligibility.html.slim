@@ -63,37 +63,43 @@ accordion-heading.lead
 
         accordion.accordion-nested.accordion.trigger-left
 
-          accordion-group.accordion-navigation
+          accordion-group.accordion-navigation ng-if="listing.COPUnits"
             accordion-heading.accordion-header
-              | 1st - Certificate of Preference (COP)
+              | {{positionOfPreference('COP')}} - Certificate of Preference (COP)
               ng-include src="'shared/templates/_arrow-down.html'"
             .content
-              / 11
-              span.c-steel Up to {{listing.COPUnits}} units available
+              span.c-steel
+                ' Up to {{listing.COPUnits}}
+                ng-pluralize count="listing.COPUnits" when="{'1': 'unit', 'other': 'units'}"
+                '  available
               br
               ' Households in which one member holds a Certificate of Preference from the former San Francisco Redevelopment Agency. COP holders were displaced by Agency action generally during the 1960s and 1970s.
               a.no-padding.no-border href='http://sfmohcd.org/certificate-preference' target='_blank'
                 | Read more
 
-          accordion-group.accordion-navigation
+          accordion-group.accordion-navigation ng-if="listing.DTHPUnits"
             accordion-heading.accordion-header
-              | 2nd - Displaced Tenant Housing Preference (DTHP)
+              | {{positionOfPreference('DTHP')}} - Displaced Tenant Housing Preference (DTHP)
               ng-include src="'shared/templates/_arrow-down.html'"
             .content
-              / 2
-              span.c-steel Up to {{listing.DTHPUnits}} units available
+              span.c-steel
+                ' Up to {{listing.DTHPUnits}}
+                ng-pluralize count="listing.DTHPUnits" when="{'1': 'unit', 'other': 'units'}"
+                '  available
               br
               ' Households in which one member holds a Displaced Tenant Housing Preference Certificate. DTHP Certificate holders are people who have been evicted through either an Ellis Act Eviction or an Owner Move-In Eviction in 2010 or later. Once all units reserved for this preference are filled, remaining DTHP holders will receive Live/Work preference, regardless of their current living or working location.
               a.no-padding.no-border href='http://sfmohcd.org/displaced-tenant-housing-preference-program-0' target='_blank'
                 | Read more
 
-          accordion-group.accordion-navigation
+          accordion-group.accordion-navigation ng-if="listing.NRHPUnits"
             accordion-heading.accordion-header
-              | 3rd - Neighborhood Resident Housing Preference (NRHP)
+              | {{positionOfPreference('NRHP')}} - Neighborhood Resident Housing Preference (NRHP)
               ng-include src="'shared/templates/_arrow-down.html'"
             .content
-              / 4
-              span.c-steel Up to {{listing.NRHPUnits}} units available
+              span.c-steel
+                ' Up to {{listing.NRHPUnits}}
+                ng-pluralize count="listing.NRHPUnits" when="{'1': 'unit', 'other': 'units'}"
+                '  available
               br
               ' Households that submit acceptable documentation that at least one member lives either within supervisorial District {{listing.supervisorialDistrict}} or within a half-mile of the project.
               a.no-padding.no-border href='http://sfmohcd.org/neighborhood-resident-housing-preference' target='_blank'
@@ -101,7 +107,7 @@ accordion-heading.lead
 
           accordion-group.accordion-navigation
             accordion-heading.accordion-header
-              | 4th - Live/Work in San Francisco Preference
+              | {{positionOfPreference('liveWork')}} - Live/Work in San Francisco Preference
               ng-include src="'shared/templates/_arrow-down.html'"
             .content
               span.c-steel All remaining units
