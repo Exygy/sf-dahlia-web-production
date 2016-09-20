@@ -231,6 +231,9 @@ ListingController = ($scope, $state, $sce, $sanitize, $filter, Carousel, SharedS
     $scope.listing.DTHPUnits = 2
     $scope.listing.NRHPUnits = 4
     $scope.listing.supervisorialDistrict = 10
+    $scope.listing.NeighborHoodPreferenceUrl = '''
+      http://sfmohcd.org/sites/default/files/Documents/MOH/Lottery%20Results/480%20Potrero%20-%20NRHP%20Status%20List.pdf
+    '''
 
   if ($scope.listingIsClarence())
     $scope.listing.COPUnits = 1
